@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Nest — Food Recipe App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-locked">
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Recipe Nest home"><span class="brand-mark">✦</span> Recipe Nest<span class="brand-dot">.</span></a>
+    <nav class="desktop-nav">
+      <a href="#discover">Discover</a>
+      <a href="#collections">My collection</a>
+      <a href="#share">Share a recipe</a>
+    </nav>
+    <div class="header-actions">
+      <button id="savedShortcut" class="icon-button" aria-label="Saved recipes" title="Saved recipes">♡</button>
+      <button id="authButton" class="button button-dark">Log in</button>
+      <button id="logoutButton" class="button button-outline hidden">Log out</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="discover">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="sparkle">✦</span> YOUR DAILY DOSE OF DELICIOUS</span>
+        <h1>Make something<br><em>wonderful.</em></h1>
+        <p>Find your next favorite meal, save the recipes you love, and share a little kitchen magic.</p>
+        <a class="button button-orange" href="#recipeGrid">Explore recipes <span>↗</span></a>
+        <div class="hero-proof"><div class="avatar-stack"><span>🥑</span><span>🍓</span><span>🥕</span></div><span><strong>Made for food lovers</strong><br>One delicious idea at a time</span></div>
+      </div>
+      <div class="hero-art" role="img" aria-label="Fresh pasta with tomatoes and basil">
+        <div class="hero-photo"></div>
+        <div class="floating-note"><span class="note-icon">✧</span><div><strong>Fresh ideas, daily</strong><small>Recipes worth sharing</small></div></div>
+        <div class="hero-sticker">GOOD<br>FOOD<br>GOOD MOOD <span>♥</span></div>
+      </div>
+    </section>
+
+    <section class="search-section" aria-label="Find recipes">
+      <div class="section-heading compact-heading"><div><span class="eyebrow">WHAT ARE YOU CRAVING?</span><h2>Find your flavor</h2></div></div>
+      <div class="search-row">
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search recipes, ingredients..." aria-label="Search recipes"></label>
+        <select id="cuisineFilter" aria-label="Filter by cuisine"><option value="">All cuisines</option><option>Indian</option><option>Italian</option><option>Asian</option><option>Mexican</option><option>Mediterranean</option></select>
+        <select id="dietFilter" aria-label="Filter by diet"><option value="">All diets</option><option>Vegetarian</option><option>Vegan</option><option>Gluten-free</option><option>High-protein</option></select>
+      </div>
+      <div class="category-row" id="categoryRow">
+        <button class="category-chip active" data-category="All">✦ All recipes</button>
+        <button class="category-chip" data-category="Quick">⚡ Quick & easy</button>
+        <button class="category-chip" data-category="Vegetarian">🥬 Vegetarian</button>
+        <button class="category-chip" data-category="Comfort">🍲 Comfort food</button>
+        <button class="category-chip" data-category="Dessert">🍰 Something sweet</button>
+      </div>
+    </section>
+
+    <section class="recipes-section" id="recipeGridSection">
+      <div class="section-heading"><div><span class="eyebrow">A LITTLE INSPIRATION</span><h2 id="recipeHeading">Recipes to fall for</h2></div><span class="result-count" id="resultCount"></span></div>
+      <div class="recipe-grid" id="recipeGrid"></div>
+      <div id="emptyState" class="empty-state hidden"><span>🥣</span><h3>No recipes found</h3><p>Try another search or clear your filters.</p><button class="button button-dark" id="clearFilters">Clear filters</button></div>
+    </section>
+
+    <section class="collection-section" id="collections">
+      <div class="collection-copy"><span class="eyebrow">YOUR LITTLE COOKBOOK</span><h2>Keep the good<br><em>ones close.</em></h2><p>Save recipes you love and build a personal collection for your next kitchen adventure.</p><button class="button button-dark" id="viewSaved">View my collection <span>♡</span></button></div>
+      <div class="collection-collage"><div class="collage-img collage-one"></div><div class="collage-img collage-two"></div><div class="collage-img collage-three"></div><span class="collage-label">A pinch of this,<br>a dash of you.</span></div>
+    </section>
+
+    <section class="share-section" id="share">
+      <div><span class="eyebrow">FROM YOUR KITCHEN TO OURS</span><h2>Have a recipe<br>worth sharing?</h2><p>Every great dish has a story. Add yours to the table.</p></div>
+      <form id="recipeForm" class="share-form">
+        <div class="form-title"><span>✳</span><div><strong>Share your recipe</strong><small>All fields marked * are required.</small></div></div>
+        <label>Recipe name *<input name="name" required maxlength="70" placeholder="e.g. Grandma's Sunday pasta"></label>
+        <div class="form-two"><label>Cuisine *<select name="cuisine" required><option value="">Choose cuisine</option><option>Indian</option><option>Italian</option><option>Asian</option><option>Mexican</option><option>Mediterranean</option><option>Other</option></select></label><label>Prep time (minutes) *<input name="time" type="number" min="1" max="600" required placeholder="30"></label></div>
+        <label>Ingredients *<textarea name="ingredients" required rows="3" placeholder="One ingredient per line"></textarea></label>
+        <label>Cooking instructions *<textarea name="instructions" required rows="4" placeholder="Tell us how to make it, step by step..."></textarea></label>
+        <label>Dietary preference<select name="diet"><option value="">No specific preference</option><option>Vegetarian</option><option>Vegan</option><option>Gluten-free</option><option>High-protein</option></select></label>
+        <button class="button button-orange button-full" type="submit">Publish recipe <span>↗</span></button>
+        <p class="form-footnote" id="shareHint">Log in to publish a recipe to your collection.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#"><span class="brand-mark">✦</span> Recipe Nest<span class="brand-dot">.</span></a><p>Made with a little love and a lot of flavor.</p><span>© <span id="year"></span> Recipe Nest Kitchen</span></footer>
+
+  <!-- Authentication modal -->
+  <div class="modal-backdrop hidden" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="modal auth-modal">
+      <button class="modal-close auth-close-hidden" data-close="authModal" aria-label="Close">×</button>
+      <div class="modal-brand">✦ Recipe Nest<span>.</span></div>
+      <div class="auth-tabs"><button class="auth-tab active" data-mode="login">Log in</button><button class="auth-tab" data-mode="signup">Create account</button></div>
+      <h2 id="authTitle">Welcome back.</h2><p id="authSubtitle">Your next favorite recipe is waiting.</p>
+      <form id="authForm">
+        <label id="nameField" class="hidden">Your name<input name="name" autocomplete="name" placeholder="Jamie Cook"></label>
+        <label>Email address<input name="email" type="email" required autocomplete="email" placeholder="you@example.com"></label>
+        <label>Password<input name="password" type="password" required minlength="6" autocomplete="current-password" placeholder="At least 6 characters"></label>
+        <button class="button button-orange button-full" id="authSubmit" type="submit">Log in <span>↗</span></button>
+        <p class="auth-message" id="authMessage" role="status"></p>
+      </form>
+      <p class="demo-note">Demo project: account details are stored in this browser only. Do not use a real password.</p>
+    </div>
+  </div>
+
+  <!-- Recipe detail modal -->
+  <div class="modal-backdrop hidden" id="recipeModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <div class="modal detail-modal"><button class="modal-close" data-close="recipeModal" aria-label="Close">×</button><div id="recipeDetail"></div></div>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
